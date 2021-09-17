@@ -56,8 +56,8 @@ function start() {
 
     playing = true;
     console.log("start game");
-    newBlock(2);
-    newBlock(2);
+    createNewBlock();
+    createNewBlock();
 }
 
 function reset() {
@@ -99,20 +99,19 @@ function updateMap(position, value) {
     draw();
 }
 
-function generateRandomPosition() {
+function generateRandomAvailablePosition() {
     let position = [-1, -1];
-    position[0] = Math.floor(Math.random() * 4);
-    position[1] = Math.floor(Math.random() * 4);
+    do {
+        position[0] = Math.floor(Math.random() * 4);
+        position[1] = Math.floor(Math.random() * 4);
+    } while (map[position[0], position[1]] > 0);
 
     console.log("generated position: ", position);
     return position;
 }
 
-function newBlock(value) {
-    let position = generateRandomPosition();
-    while (map[position[0]][position[1]] !== 0) {
-        position = generateRandomPosition();
-    }
-
+function createNewBlock() {
+    const position = generateRandomAvailablePosition();
+    const value = Math.random() < 0.9 ? 2 : 4;
     updateMap(position, value);
 }
