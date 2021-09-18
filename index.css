@@ -76,7 +76,6 @@ p.title {
 }
 
 .game-info {
-  text-align: justify;
   margin-left: 16px;
 }
 
@@ -84,10 +83,21 @@ p.title {
   margin: 0;
 }
 
+.score {
+  width: fit-content;
+  display: flex;
+  padding: 10px;
+  border-radius: 2px;
+  background-color: #ccc;
+}
+
 .score > div {
-  display: inline-block;
   background-color: #eee;
   padding: 8px 12px;
+}
+
+.score > div:first-child {
+  margin-right: 8px;
 }
 
 .score > div > p {
@@ -122,4 +132,42 @@ p.title {
   font-size: 28px;
   margin: 0 8px;
   padding: 8px 20px;
+}
+
+@media (max-width: 900px) {
+  .container {
+    padding: 32px 8px;
+  }
+
+  .game {
+    flex-direction: column;
+  }
+
+  .board {
+    max-width: 90vw;
+    padding: 8px;
+  }
+
+  .row {
+    margin-bottom: 6px;
+  }
+
+  .row > .block {
+    min-width: 70px;
+    min-height: 70px;
+    margin-left: 6px;
+  }
+
+  .game-info {
+    margin-left: 0;
+    margin-top: 16px;
+  }
+
+  .score {
+    padding: 8px;
+  }
+
+  .score > div:first-child {
+    margin-right: 6px;
+  }
 }
